@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mybatis_study.mapper.DepartmentMapper">
+
+<!-- 查询全部（过滤逻辑删除） -->
+<select id="selectList" resultType="org.example.mybatis_study.pojo.Department">
+    SELECT * FROM department
+    WHERE is_deleted = 0
+    ORDER BY parent_id, sort
+</select>
+
+<!-- 根据ID查询 -->
+<select id="selectById" resultType="org.example.mybatis_study.pojo.Department">
+    SELECT * FROM department
+    WHERE id = #{id}
+</select>
+
+<!-- 新增 -->
+<insert id="insert">
+    INSERT INTO department
+    (name, code, parent_id, leader, phone, sort, status, is_deleted, create_time)
+    VALUES
+        (#{name}, #{code}, #{parentId}, #{leader}, #{phone}, #{sort}, #{status}, 0, NOW())
+</insert>
+
+<!-- 修改 -->
+<update id="updateById">
+    UPDATE department
+    SET name = #{name},
+        code = #{code},
+        parent_id = #{parentId},
+        leader = #{leader},
+        phone = #{phone},
+        sort = #{sort},
+        status = #{status},
+        update_time = NOW()
+    WHERE id = #{id}
+</update>
+
+<!-- 逻辑删除 -->
+<update id="deleteById">
+    UPDATE department
+    SET is_deleted = 1
+    WHERE id = #{id}
+</update>
+
+</mapper>
