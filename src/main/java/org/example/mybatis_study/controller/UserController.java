@@ -1,6 +1,7 @@
 package org.example.mybatis_study.controller;
 
 import org.example.mybatis_study.mapper.UserMapper;
+import org.example.mybatis_study.pojo.Result;
 import org.example.mybatis_study.pojo.User;
 import org.example.mybatis_study.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class UserController {
      * GET /user/list
      */
     @GetMapping("/list")
-    public List<User> list() {
-        return userServiceImpl.selectList();
+    public Result list() {
+        return Result.success(userServiceImpl.selectList());
     }
 
     /**
@@ -27,8 +28,8 @@ public class UserController {
      * GET /user/1
      */
     @GetMapping("/{id}")
-    public User getById(@PathVariable Long id) {
-        return userServiceImpl.selectById(id);
+    public Result getById(@PathVariable Long id) {
+        return Result.success(userServiceImpl.selectById(id));
     }
 
     /**
@@ -36,9 +37,9 @@ public class UserController {
      * POST /user
      */
     @PostMapping
-    public String add(@RequestBody User user) {
+    public Result add(@RequestBody User user) {
         int result = userServiceImpl.insert(user);
-        return result > 0 ? "新增成功" : "新增失败";
+        return result > 0 ? Result.success("新增成功") : Result.error("新增失败");
     }
 
     /**
@@ -46,9 +47,9 @@ public class UserController {
      * PUT /user
      */
     @PutMapping
-    public String update(@RequestBody User user) {
+    public Result update(@RequestBody User user) {
         int result = userServiceImpl.updateById(user);
-        return result > 0 ? "修改成功" : "修改失败";
+        return result > 0 ? Result.success("修改成功") : Result.error("修改失败");
     }
 
     /**
@@ -56,8 +57,8 @@ public class UserController {
      * DELETE /user/1
      */
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable Long id) {
+    public Result delete(@PathVariable Long id) {
         int result = userServiceImpl.deleteById(id);
-        return result > 0 ? "删除成功" : "删除失败";
+        return result > 0 ? Result.success("删除成功") : Result.error("删除失败");
     }
 }
