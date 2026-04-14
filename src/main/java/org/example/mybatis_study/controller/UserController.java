@@ -1,26 +1,29 @@
 package org.example.mybatis_study.controller;
 
-import org.example.mybatis_study.mapper.UserMapper;
 import org.example.mybatis_study.pojo.Result;
 import org.example.mybatis_study.pojo.User;
 import org.example.mybatis_study.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserServiceImpl userServiceImpl;
+
     /**
      * 查询所有用户
      * GET /user/list
      */
     @GetMapping("/list")
-    public Result list() {
-        return Result.success(userServiceImpl.selectList());
+    public Result list(@RequestParam(defaultValue = "1") Integer pageNum,
+                       @RequestParam(defaultValue = "10") Integer pageSize,
+                       String name) {
+        return Result.success(userServiceImpl.pageBean(pageNum, pageSize,name));
     }
 
     /**

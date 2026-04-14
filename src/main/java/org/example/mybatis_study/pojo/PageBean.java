@@ -1,0 +1,14 @@
+package org.example.mybatis_study.pojo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PageBean {
+    private Long count;
+    private List<User> list;
+}

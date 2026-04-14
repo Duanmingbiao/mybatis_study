@@ -1,39 +1,45 @@
 package org.example.mybatis_study.service;
 
 import org.example.mybatis_study.mapper.UserMapper;
+import org.example.mybatis_study.pojo.PageBean;
 import org.example.mybatis_study.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserMapper {
+public class UserServiceImpl {
     @Autowired
     private UserMapper userMapper;
 
-    @Override
     public int insert(User user) {
         return userMapper.insert(user);
     }
 
-    @Override
     public int deleteById(Long id) {
         return userMapper.deleteById(id);
     }
-
-    @Override
     public int updateById(User user) {
         return userMapper.updateById(user);
     }
 
-    @Override
-    public List<User> selectList() {
-        return  userMapper.selectList();
+    public List<User> selectList(Integer pageNum,Integer pageSize,String name) {
+        return  userMapper.selectList(pageNum,pageSize,name);
     }
 
-    @Override
     public User selectById(Long id) {
         return userMapper.selectById(id);
+    }
+    public Long count(){
+        return userMapper.count();
+    }
+    public PageBean pageBean(Integer pageNum, Integer pageSize, String name){
+        Long count = userMapper.count();
+        Integer start = (pageNum - 1) * pageSize;
+        List<User> users = userMapper.selectList(start, pageSize,name);
+        return new PageBean(count,users);
     }
 }
