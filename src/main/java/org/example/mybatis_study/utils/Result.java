@@ -1,4 +1,4 @@
-package org.example.mybatis_study.pojo;
+package org.example.mybatis_study.utils;
 
 public class Result<T> {
 

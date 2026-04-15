@@ -2,13 +2,11 @@ package org.example.mybatis_study.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.mybatis_study.pojo.Department;
-import org.example.mybatis_study.pojo.Result;
+import org.example.mybatis_study.utils.Result;
 import org.example.mybatis_study.service.DepartmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.logging.Logger;
 @Slf4j
 @RestController
 @RequestMapping("/Department")

@@ -1,12 +1,11 @@
 package org.example.mybatis_study.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.mybatis_study.pojo.Result;
+import org.example.mybatis_study.utils.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Slf4j

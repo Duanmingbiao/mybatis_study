@@ -1,13 +1,10 @@
 package org.example.mybatis_study.controller;
 
-import org.example.mybatis_study.pojo.Result;
+import org.example.mybatis_study.utils.Result;
 import org.example.mybatis_study.pojo.User;
 import org.example.mybatis_study.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/user")

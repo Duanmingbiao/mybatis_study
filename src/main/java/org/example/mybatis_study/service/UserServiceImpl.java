@@ -51,7 +51,6 @@ public class UserServiceImpl {
     }
     public User login(User user) {
         User loginUser = userMapper.getLogin(user);
-        log.info("登录人员信息" + loginUser);
         return loginUser;
     }
 }
