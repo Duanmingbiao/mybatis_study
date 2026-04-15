@@ -16,4 +16,5 @@ public interface UserMapper {
     User selectById(Long id);
     @Select("select count(*) from user")
     Long count();
+    User getLogin(User user);
 }

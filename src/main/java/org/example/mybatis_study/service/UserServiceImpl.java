@@ -49,4 +49,9 @@ public class UserServiceImpl {
         log.info("获取配置信息" + configerProperties.getUsername());
         return new PageBean(count,users);
     }
+    public User login(User user) {
+        User loginUser = userMapper.getLogin(user);
+        log.info("登录人员信息" + loginUser);
+        return loginUser;
+    }
 }

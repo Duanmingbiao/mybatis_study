@@ -38,4 +38,11 @@
         SET is_deleted = 1
         WHERE id = #{id}
     </update>
+    <select id="getLogin" resultType="org.example.mybatis_study.pojo.User">
+        SELECT * FROM user
+        WHERE
+            user_name = #{username}
+        AND
+            password = #{password}
+    </select>
 </mapper>
