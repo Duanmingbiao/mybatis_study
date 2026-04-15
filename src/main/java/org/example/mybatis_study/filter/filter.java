@@ -6,12 +6,11 @@ import org.example.mybatis_study.utils.Result;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter("/*") //表示拦截所有接口，注意在spring项目中使用过滤器filter需要在启动项中配置注解
+//@WebFilter("/*") //表示拦截所有接口，注意在spring项目中使用过滤器filter需要在启动项中配置注解
 public class filter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
