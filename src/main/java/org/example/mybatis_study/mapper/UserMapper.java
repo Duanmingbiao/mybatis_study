@@ -11,6 +11,7 @@ import java.util.List;
 public interface UserMapper {
     int insert(User user);
     int deleteById(Long id);
+    int deleteBypartId(Long id);
     int updateById(User user);
     List<User> selectList(@Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize, @Param("name") String name);
     User selectById(Long id);

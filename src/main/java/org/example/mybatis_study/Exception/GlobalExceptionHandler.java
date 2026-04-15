@@ -1,4 +1,4 @@
-package org.example.mybatis_study.ExceptioN;
+package org.example.mybatis_study.Exception;
 
 import org.example.mybatis_study.utils.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;

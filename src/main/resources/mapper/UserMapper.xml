@@ -38,6 +38,11 @@
         SET is_deleted = 1
         WHERE id = #{id}
     </update>
+    <update id="deleteBypartId">
+        UPDATE user
+        SET is_deleted = 1
+        WHERE dept_id = #{id}
+    </update>
     <select id="getLogin" resultType="org.example.mybatis_study.pojo.User">
         SELECT * FROM user
         WHERE
