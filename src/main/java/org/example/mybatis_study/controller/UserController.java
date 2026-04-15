@@ -30,8 +30,12 @@ public class UserController {
      * 根据ID查询用户
      * GET /user/1
      */
+//    @GetMapping("/{id}")
+//    public Result getById(@PathVariable Long id) {
+//        return Result.success(userServiceImpl.selectById(id));
+//    }
     @GetMapping("/{id}")
-    public Result getById(@PathVariable Long id) {
+    public Result getById(@PathVariable("id") Long id){
         return Result.success(userServiceImpl.selectById(id));
     }
 

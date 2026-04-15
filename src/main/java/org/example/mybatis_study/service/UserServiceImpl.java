@@ -1,24 +1,30 @@
 package org.example.mybatis_study.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.mybatis_study.mapper.UserMapper;
+import org.example.mybatis_study.pojo.ConfigerProperties;
 import org.example.mybatis_study.pojo.PageBean;
 import org.example.mybatis_study.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
+import org.springframework.util.unit.DataSize;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Slf4j
 @Service
 public class UserServiceImpl {
     @Autowired
     private UserMapper userMapper;
-
     public int insert(User user) {
         return userMapper.insert(user);
     }
-
+    @Autowired
+    public ConfigerProperties configerProperties;
     public int deleteById(Long id) {
         return userMapper.deleteById(id);
     }
@@ -40,6 +46,7 @@ public class UserServiceImpl {
         Long count = userMapper.count();
         Integer start = (pageNum - 1) * pageSize;
         List<User> users = userMapper.selectList(start, pageSize,name);
+        log.info("获取配置信息" + configerProperties.getUsername());
         return new PageBean(count,users);
     }
 }

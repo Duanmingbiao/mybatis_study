@@ -44,6 +44,12 @@
             <artifactId>pagehelper</artifactId>
             <version>6.1.1</version>
         </dependency>
+<!--        配置文件提示词-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>4.1.0-M4</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
